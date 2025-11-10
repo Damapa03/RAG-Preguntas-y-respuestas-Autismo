@@ -19,6 +19,9 @@ EMBEDDING_MODEL = "models/text-embedding-004"
 # Dimensión de los embeddings (text-embedding-004 usa 768)
 EMBEDDING_DIM = 768
 
+# Modelo generativo de Google AI (para respuestas)
+GENERATIVE_MODEL = "models/gemini-2.5-pro"
+
 # Límite de la API: 100 documentos por llamada de embedding
 BATCH_SIZE = 100
 
@@ -238,6 +241,112 @@ def handle_search(args):
         else:
             print(f"\nResultado {i+1} (ID: {idx}) - No se encontraron metadatos.")
 
+# --- NUEVA FUNCIÓN 'ASK' (RAG) ---
+
+def handle_ask(args):
+    """
+    Modo 'ask': Realiza una búsqueda RAG.
+    1. Recupera chunks (Retrieval)
+    2. Genera una respuesta basada en los chunks (Generation)
+    """
+    print(f"--- Modo ASK: Respondiendo a '{args.query}' ---")
+    
+    # 1. Verificar que los archivos de índice existen
+    if not os.path.exists(FAISS_INDEX_FILE) or not os.path.exists(METADATA_MAP_FILE):
+        print(f"Error: No se encontró {FAISS_INDEX_FILE} o {METADATA_MAP_FILE}.")
+        print("Ejecuta el modo 'create' primero.")
+        return
+
+    # --- PASO 1: CAPA DE BÚSQUEDA (RETRIEVAL) ---
+    
+    print("Cargando índice y metadatos...")
+    index = faiss.read_index(FAISS_INDEX_FILE)
+    with open(METADATA_MAP_FILE, 'r', encoding='utf-8') as f:
+        metadata_map = json.load(f)
+
+    print("Generando embedding para la consulta...")
+    try:
+        result = genai.embed_content(
+            model=EMBEDDING_MODEL,
+            content=args.query,
+            task_type="RETRIEVAL_QUERY"
+        )
+        query_vector = np.array([result['embedding']]).astype('float32')
+    except Exception as e:
+        print(f"Error al generar embedding para la consulta: {e}")
+        return
+
+    k = args.k
+    print(f"Buscando los {k} chunks más relevantes...")
+    distances, indices = index.search(query_vector, k)
+
+    if not indices.size:
+        print("No se encontraron documentos relevantes para responder la pregunta.")
+        return
+
+    # Recopilar los chunks de contexto
+    context_chunks = []
+    for idx in indices[0]:
+        chunk_data = metadata_map.get(str(idx))
+        if chunk_data:
+            context_chunks.append(chunk_data)
+
+    if not context_chunks:
+        print("Se encontraron índices pero no metadatos. El mapa está corrupto.")
+        return
+
+    # --- PASO 2: CAPA DE GENERACIÓN (GENERATION) ---
+
+    print("Construyendo prompt de contexto y generando respuesta...")
+
+    # 2.1. Construir el prompt de contexto
+    
+    # Instrucción de sistema (System Prompt)
+    system_prompt = (
+        "Eres un asistente amable y servicial para familias. "
+        "Tu tarea es responder la pregunta del usuario basándote *única y exclusivamente* "
+        "en los siguientes extractos de documentos (contexto) que se te proporcionan.\n"
+        "Redacta una respuesta clara, concisa y en un lenguaje fácil de entender.\n"
+        "Cuando sea posible, cita la fuente del documento (ej. 'Según la Guía X...') "
+        "usando la información de 'Fuente:' y 'Sección:' de los extractos."
+    )
+    
+    # Formatear los chunks de contexto
+    context_str = "--- INICIO DEL CONTEXTO ---\n"
+    for i, chunk in enumerate(context_chunks):
+        metadata = chunk['metadata']
+        context_str += (
+            f"\nExtracto {i+1}:\n"
+            f"Fuente: {metadata.get('source_file')}\n"
+            f"Sección: {metadata.get('logical_section')}\n"
+            f"Contenido: {chunk['content']}\n"
+            f"--- (fin del extracto {i+1}) ---\n"
+        )
+    context_str += "--- FIN DEL CONTEXTO ---\n"
+    
+    # Prompt final
+    final_prompt = (
+        f"{system_prompt}\n\n"
+        f"{context_str}\n\n"
+        f"Pregunta del Usuario: {args.query}\n\n"
+        f"Respuesta (basada *sólo* en el contexto anterior):"
+    )
+
+    # 2.2. Llamar al modelo generativo
+    try:
+        model = genai.GenerativeModel(GENERATIVE_MODEL)
+        response = model.generate_content(final_prompt)
+        
+        # 2.3. Mostrar la respuesta
+        print("\n--- Respuesta Generada ---")
+        print(response.text)
+        print("--------------------------")
+
+    except Exception as e:
+        print(f"\nError al generar la respuesta: {e}")
+        print("\n--- Contexto que se iba a utilizar ---")
+        print(final_prompt)
+
 # --- PUNTO DE ENTRADA PRINCIPAL ---
 
 def main():
@@ -312,6 +421,24 @@ def main():
         help="Número de resultados a devolver (default: 5)"
     )
     search_parser.set_defaults(func=handle_search)
+    
+    # --- Comando 'ask' ---
+    ask_parser = subparsers.add_parser(
+        'ask',
+        help="Realiza una respuesta dada la información de la pregunta"
+    )
+    ask_parser.add_argument(
+        '--query',
+        required=True,
+        help="Pregunta a realizar"
+    )
+    ask_parser.add_argument(
+        '-k', 
+        type=int, 
+        default=5, 
+        help="Número de resultados a devolver (default: 5)"
+    )
+    ask_parser.set_defaults(func=handle_ask)
     
     # 3. Parsear argumentos y ejecutar la función
     args = parser.parse_args()
