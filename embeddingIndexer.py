@@ -5,6 +5,7 @@ import json
 import os
 import argparse
 import time
+from pathlib import Path
 from tqdm import tqdm
 from typing import List, Dict, Any
 
@@ -85,9 +86,9 @@ def get_embeddings_batched(
 def handle_create(args):
     """
     Modo 'create': Borra cualquier índice existente y construye uno
-    nuevo desde cero a partir de un archivo .jsonl.
+    nuevo desde cero a partir de un *DIRECTORIO* de archivos .jsonl.
     """
-    print(f"--- Modo CREATE: Reconstruyendo índice desde {args.input} ---")
+    print(f"--- Modo CREATE: Reconstruyendo índice desde el directorio {args.input} ---")
     
     # 1. Borrar archivos antiguos si existen
     if os.path.exists(FAISS_INDEX_FILE):
@@ -97,8 +98,32 @@ def handle_create(args):
         os.remove(METADATA_MAP_FILE)
         print(f"Archivo de metadatos antiguo borrado: {METADATA_MAP_FILE}")
 
-    # 2. Cargar chunks
-    chunks = load_chunks_from_jsonl(args.input)
+    # --- MODIFICADO: Cargar desde directorio ---
+    
+    # 2. Cargar chunks desde todos los .jsonl en el directorio
+    print(f"Buscando archivos .jsonl en: {args.input}")
+    input_path = Path(args.input)
+    if not input_path.is_dir():
+        print(f"Error: La ruta de entrada no es un directorio: {args.input}")
+        return
+
+    jsonl_files = list(input_path.glob("*.jsonl"))
+    if not jsonl_files:
+        print(f"No se encontraron archivos .jsonl en {args.input}. Abortando.")
+        return
+
+    print(f"Se encontraron {len(jsonl_files)} archivos .jsonl. Cargando...")
+    
+    all_chunks = []
+    # Usamos tqdm para la lista de archivos
+    for file_path in tqdm(jsonl_files, desc="Procesando archivos"):
+        chunks_from_file = load_chunks_from_jsonl(str(file_path))
+        all_chunks.extend(chunks_from_file)
+    
+    chunks = all_chunks
+    print(f"\nCarga completada. Total de chunks cargados: {len(chunks)}")
+    # --- FIN DE LA MODIFICACIÓN ---
+
     if not chunks:
         print("No se cargaron chunks. Abortando.")
         return
@@ -374,19 +399,20 @@ def main():
     create_help = (
         "Crea (o reconstruye) el índice FAISS desde cero.\n"
         "Borra cualquier índice y mapa de metadatos existentes.\n"
+        "Espera un *directorio* que contenga los archivos .jsonl.\n"
         "**ESTRATEGIA DE ACTUALIZACIÓN:** Si una normativa cambia,\n"
-        "vuelve a generar tu .jsonl y usa 'create' para recalcular todo."
+        "vuelve a generar tus .jsonl y usa 'create' para recalcular todo."
     )
     create_parser = subparsers.add_parser(
         'create', 
-        help="Reconstruye el índice completo.",
+        help="Reconstruye el índice completo desde un directorio.",
         description=create_help
     )
     create_parser.add_argument(
         '--input', 
         type=str, 
         required=True, 
-        help="Archivo .jsonl de entrada (ej. chunks_corpus.jsonl)"
+        help="Directorio de entrada con archivos .jsonl (ej. ./chunks_individuales)"
     )
     create_parser.set_defaults(func=handle_create)
 
