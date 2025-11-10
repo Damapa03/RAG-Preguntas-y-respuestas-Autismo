@@ -10,7 +10,7 @@ from typing import List, Dict, Any
 CARPETA_ENTRADA = Path("H:/Mi unidad/Classroom/26PIA/Proyecto RAG/texto/txtLimpieza")
 
 # 2. Archivo de salida (se creará si no existe)
-ARCHIVO_SALIDA = Path("H:/Mi unidad/Classroom/26PIA/Proyecto RAG/chunks_corpus.jsonl")
+CARPETA_SALIDA = CARPETA_ENTRADA.parent.parent / "chunks_individuales"
 
 # 3. Tamaño deseado del chunk (en caracteres)
 CHUNK_SIZE_OBJETIVO = 1500
@@ -199,51 +199,56 @@ def main():
         print(f"Error: La carpeta de entrada no existe: {CARPETA_ENTRADA}")
         return
 
-    # Contador global para IDs de chunks únicos
-    chunk_id_contador = 0
+    os.makedirs(CARPETA_SALIDA, exist_ok=True)
+
     total_chunks_generados = 0
     
     print(f"Iniciando el proceso de particionado...")
     print(f"Fuente: {CARPETA_ENTRADA}")
-    print(f"Salida: {ARCHIVO_SALIDA}")
+    print(f"Salida: {CARPETA_SALIDA}")
     print(f"Tamaño/Overlap: {CHUNK_SIZE_OBJETIVO}/{CHUNK_OVERLAP}\n")
     
     # Abrimos el archivo de salida en modo escritura
-    with open(ARCHIVO_SALIDA, "w", encoding="utf-8") as f_out:
-        
-        archivos_txt = list(CARPETA_ENTRADA.glob("*.txt"))
-        
-        if not archivos_txt:
-            print("Advertencia: No se encontraron archivos .txt en la carpeta de entrada.")
-            return
+    archivos_txt = list(CARPETA_ENTRADA.glob("*.txt"))
+    
+    if not archivos_txt:
+        print("Advertencia: No se encontraron archivos .txt en la carpeta de entrada.")
+        return
 
-        for ruta_txt in archivos_txt:
-            nombre_archivo = ruta_txt.name
-            print(f"Procesando: {nombre_archivo}...")
+    # --- MODIFICADO: No hay 'with open' global ---
+    for ruta_txt in archivos_txt:
+        nombre_archivo = ruta_txt.name
+        print(f"Procesando: {nombre_archivo}...")
+        
+        # --- NUEVO: Definir ruta de salida para este archivo ---
+        nombre_base = ruta_txt.stem
+        nombre_salida = f"chunk_{nombre_base}.jsonl"
+        ruta_salida = CARPETA_SALIDA / nombre_salida
+        
+        try:
+            with open(ruta_txt, "r", encoding="utf-8") as f_in:
+                texto = f_in.read()
             
-            try:
-                with open(ruta_txt, "r", encoding="utf-8") as f_in:
-                    texto = f_in.read()
-                
-                # Procesamos el documento
-                lista_json, chunk_id_contador = procesar_documento(
-                    texto, nombre_archivo, chunk_id_contador
-                )
-                
-                # Escribimos los chunks en el archivo .jsonl
+            # Procesamos el documento, reseteando el contador a 0
+            lista_json, _ = procesar_documento(
+                texto, nombre_archivo, 0 
+            )
+            
+            # --- NUEVO: Escribir en el archivo de salida individual ---
+            with open(ruta_salida, "w", encoding="utf-8") as f_out:
                 for chunk_json in lista_json:
                     # json.dumps con ensure_ascii=False para tildes
                     f_out.write(json.dumps(chunk_json, ensure_ascii=False) + "\n")
-                
-                print(f"  -> Generados {len(lista_json)} chunks.")
-                total_chunks_generados += len(lista_json)
+            
+            print(f"  -> Generados {len(lista_json)} chunks. -> {ruta_salida}")
+            total_chunks_generados += len(lista_json)
 
-            except Exception as e:
-                print(f"  ❌ Error procesando {nombre_archivo}: {e}")
+        except Exception as e:
+            print(f"  ❌ Error procesando {nombre_archivo}: {e}")
 
     print(f"\n¡Proceso completado!")
     print(f"Se generaron un total de {total_chunks_generados} chunks.")
-    print(f"Resultados guardados en: {ARCHIVO_SALIDA}")
+    print(f"Resultados guardados en: {CARPETA_SALIDA}")
 
 # --- Ejecutar el script ---
 if __name__ == "__main__":
