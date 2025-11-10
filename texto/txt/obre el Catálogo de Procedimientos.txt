@@ -1,0 +1,87 @@
+obre el Catálogo de Procedimientos y Servicios
+El Catálogo de Procedimientos y Servicios ofrece información general permanente y actualizada sobre los procedimientos administrativos y servicios de la Administración de la Junta de Andalucía dirigidos a la ciudadanía, en cumplimiento de la legislación del procedimiento administrativo común. Es también un instrumento de publicidad activa.
+
+Haz uso de la presentación telemática de documentos siempre que sea posible, a través del formulario específico del procedimiento. Para ello, consulta la sección 'Cómo realizar un trámite' dentro de cada procedimiento en el Catálogo de Procedimientos y Servicios.  
+
+A continuación te informamos de algunas cuestiones que pueden orientarte y facilitarte el acceso al Catálogo: cómo hacer una búsqueda, calcular los plazos o realizar un trámite.
+
+Cómo hacer una búsqueda
+Para localizar un procedimiento o servicio determinado, dispones de los siguientes buscadores y filtros para que utilices el que te resulte más fácil y cómodo:
+
+Buscador al Catálogo de Procedimientos y Servicios
+https://www.juntadeandalucia.es/servicios/sede/tramites/procedimientos.html
+Guía de uso del Catálogo de Procedimientos y Servicios (Video)
+https://www.juntadeandalucia.es/servicios/videos/detalle/235584.html
+Últimos días para iniciar
+https://www.juntadeandalucia.es/servicios/ultimos-dias-para.html
+
+Buscar
+Funciona mediante la utilización de palabras. Para ello, escribe el término que más pueda identificar al procedimiento que buscas o alguna palabra que sepas que es utilizada en su denominación o descripción. El buscador mostrará una relación de aquellos en los que en su denominación o descripción aparezca el término utilizado.
+
+Filtros
+En la columna de la derecha los resultados de la búsqueda se organizan en filtros por Plazo (abierto o cerrado), Tema, Organismos y Familia de procedimientos. Estos filtros son seleccionables y ayudan a acotar la búsqueda.
+
+Información del procedimiento
+La información de cada procedimiento o servicio se ofrecerá a través de estos apartados, en cuya cabecera se incluirá siempre la denominación para ser posible su identificación:
+
+Datos básicos.
+Cómo realizar el trámite.
+Normativa.
+Información adicional.
+Seguimiento de la tramitación.
+Datos básicos
+Incluye la siguiente información:
+
+Código: código identificador del procedimiento o servicio.
+Consejería/Entidad: consejería o entidad instrumental, en su caso, competente en el procedimiento.
+Descripción: objeto y finalidad del procedimiento o servicio.
+Plazo de solicitud: período de tiempo en el que se puede presentar la solicitud de inicio del procedimiento o servicio. Si puede empezarse en cualquier fecha, este campo no aparecerá.
+Tipo de concurrencia: atributo de los procedimientos de subvenciones, ayudas y becas. Puede ser alguno de los siguientes:
+Competitiva: concesión de subvenciones mediante la comparación de las solicitudes presentadas a fin de establecer una prelación entre las mismas (de acuerdo con los criterios de valoración previamente fijados en las bases reguladoras) y de adjudicar, con el límite del crédito disponible fijado en la convocatoria, aquellas que hayan obtenido mayor valoración. Las solicitudes se tramitan, valoran y resuelven de forma conjunta.
+No competitiva: las subvenciones se conceden en atención a la existencia de una determinada situación en la persona beneficiaria, sin que sea necesario establecer en tales casos la comparación de las solicitudes ni la prelación entre las mismas, tramitándose y resolviéndose de forma independiente.
+Excepcional: concesión directa de subvenciones cuando lo acrediten razones de interés público, social, económico o humanitario, u otras debidamente justificadas que dificulten su convocatoria pública.
+Cómo realizar el trámite
+Por internet: para presentar la solicitud o tramitar electrónicamente debes disponer de un certificado digital de los admitidos en la Junta de Andalucía, por ejemplo, el de la Fábrica Nacional de Moneda y Timbre o el DNI electrónico. Existen dos modalidades, en función de que la tramitación electrónica se refiera sólo a la presentación de la solicitud o en cambio sea completa en todo el desarrollo del procedimiento:
+Solicitud en línea.
+Solicita y tramita en línea.
+Una vez enlaces en alguno de ellos, debes continuar con las instrucciones que vayan apareciendo hasta lograr la presentación de la solicitud.
+
+Presencialmente: implica la presentación de la solicitud en los registros de documentos, cuya localización puede consultarse en el apartado Oficinas de asistencia en materia de registro.
+Normativa
+Normativa que regula el procedimiento o servicio con su enlace al BOJA, lo que permite su consulta e impresión.
+
+Información adicional
+Órganos responsables. Pueden ser de tres tipos, según la tarea que asuman en el desarrollo del procedimiento:
+Tramitar la solicitud.
+Resolver el procedimiento.
+Ser competentes en la materia del procedimiento.
+Plazo resolución/notificación:
+Plazo del que dispone la administración para resolver el procedimiento.
+Sentido del silencio: positivo o negativo. Si es positivo, podrás entender estimada la solicitud con el transcurso del plazo máximo sin que la administración resuelva. En cambio, si es negativo, se entenderá desestimada.
+Agota vía administrativa: si el acto resolutorio del procedimiento agota la vía administrativa, puedes acudir directamente al orden jurisdiccional contencioso-administrativo si deseas impugnarlo. En cambio, si no agota la vía administrativa debes de realizar la impugnación mediante los recursos administrativos que correspondan.
+Seguimiento de la tramitación
+Este apartado incluye información relativa a actos publicados relacionados con el procedimiento posteriores a su iniciación. Ejemplo: listados de admitidos, propuesta de resolución, etc.
+Estado de tramitación: a través de este enlace puedes consultar el estado en el que se encuentra la tramitación de la solicitud que presentaste, iniciando el procedimiento.
+Aportación de documentación: a través de este enlace, una vez iniciado el procedimiento, puedes aportar documentación al procedimiento de modo telemático.
+Información pública: a través de este enlace puedes presentar alegaciones de modo telemático a la vista del expediente, en el período de información pública del procedimiento.
+Cómo calcular los plazos de un trámite
+El cómputo de plazos en la Administración se rige por el art. 30 de la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas. Para computar los plazos de un trámite es necesario considerar:
+
+La medida en la que viene dado el plazo (días, meses o años).
+El día en que comienza a contarse el plazo.
+El día de finalización del plazo.
+Siempre que por Ley o en el Derecho de la Unión Europea no se exprese otro cómputo, cuando los plazos se señalen por días, se entiende que estos son hábiles, excluyéndose del cómputo los sábados, los domingos y los declarados festivos.
+
+Si el plazo se fija en meses o años se entiende que se trata de meses o años naturales. Si en el mes de vencimiento no hubiera día equivalente a aquel en que comienza el cómputo, el plazo expira el último día del mes.
+
+Los plazos se contarán a partir del día siguiente a aquel en que tenga lugar la notificación o publicación del acto o desde el siguiente a aquel en que se produzca la estimación o la desestimación por silencio administrativo, salvo que en la misma resolución se haga constar que el plazo se contará desde el mismo día de la publicación.
+
+Cuando el último día del plazo sea inhábil, tanto en el caso de que el plazo venga marcado por días naturales como si es por días hábiles/inhábiles, este se prorrogará al primer día hábil siguiente.
+
+Cuando un día fuese hábil en el municipio o comunidad autónoma en que residiese el interesado, e inhábil en la sede del órgano administrativo, o a la inversa, se considerará inhábil en todo caso.
+
+Por ello, si en el transcurso del plazo de presentación de la solicitud ha habido algún día inhábil (fiesta local) en el municipio en el que resides o en el que tiene su sede el órgano administrativo, tendrás que aumentar el plazo en un día o días inhábiles, según corresponda.
+
+Además, cuando el último día del plazo sea inhábil, tanto en el caso de que el plazo esté establecido en la norma en días naturales como en días hábiles, éste se prorrogará al primer día hábil siguiente.
+
+Si lo deseas, puedes consultar el Calendario de días inhábiles de la Comunidad Autónoma y Municipios de Andalucía.

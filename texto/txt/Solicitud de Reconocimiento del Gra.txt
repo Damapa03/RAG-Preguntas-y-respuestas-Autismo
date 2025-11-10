@@ -1,0 +1,45 @@
+Solicitud de Reconocimiento del Grado de Discapacidad
+
+Descripción
+Es el procedimiento a través del cual se produce el reconocimiento, calificación y valoración del grado de discapacidad. Es el requisito necesario para poder acceder a cualquiera de los servicios y prestaciones que existen a disposición de las personas con discapacidad, para lo que es imprescindible tener reconocido un grado de discapacidad igual o superior al 33%.
+
+Cómo realizar el trámite
+Relación con la Administración
+Presencial y electrónica.
+
+Si eres una persona física, puedes optar por la presentación presencial o electrónica. Si optas por la presentación presencial, puedes hacerlo en las Oficinas de asistencia en materia de registros de cualquier Administración Pública o en las de correos. Para hacerlo en una Oficina de asistencia en materia de registros de la Junta de Andalucía se recomienda solicitar cita previa. Si optas por la presentación electrónica, debes hacerlo en la dirección electrónica indicada en la fase correspondiente.
+
+Si no dispones de los medios electrónicos necesarios, puedes ser asistido para hacer esta tramitación en una Oficina de asistencia en materia de registros de la Junta de Andalucía para lo que se recomienda solicitar cita previa
+
+Si eres sujeto obligado a relacionarte electrónicamente con la Administración, debes hacer la presentación en la dirección electrónica indicada en la fase correspondiente. Si la realizas de forma presencial, el órgano de tramitación podrá requerirte la subsanación a través de la presentación electrónica con los efectos que para estos casos dispone la normativa (art. 68.4 de la ley 39/2015, de 1 de octubre). Esta obligación de relacionarse por medios electrónicos no será de aplicación en aquellos trámites concretos en que la norma que regula un determinado procedimiento disponga su realización por medios exclusivamente presenciales.
+
+Acceso a la fase
+Inicio:Enlace al inicio
+https://ws050.juntadeandalucia.es/vea/accesoDirecto/CIPS/CIPSC_69
+Subsanación:
+Enlace a la subsanación
+https://ws050.juntadeandalucia.es/vea/accesoDirecto?codProcedimiento=PEG_VEA
+Alegaciones:
+Enlace para realizar alegaciones
+https://ws050.juntadeandalucia.es/vea/accesoDirecto?codProcedimiento=PEG_VEA
+Aportación de documentos:
+Enlace para la aportación de documentos
+https://ws050.juntadeandalucia.es/vea/accesoDirecto?codProcedimiento=PEG_VEA
+
+Formularios
+Solicitud de reconocimiento del grado de discapacidad Nº: 001809/7D (Obligatorio)
+https://www.juntadeandalucia.es/haciendayadministracionpublica/rpa-icms-doc/icmsDescargaDoc.do?tipo=4b40ba71bf0bae77c7a9e6765035191a&id=b4b2a2544ac8eed6e66f65123a14e422
+Requisitos
+No existen requisitos previos para el acceso al procedimiento de reconocimiento, calificación y valoración del grado de discapacidad.
+
+Todas las personas con vecindad administrativa en Andalucía y aquellas que se encuentren en la comunidad autónoma en una situación de urgencia personal, familiar o social, podrán acceder, en todo caso,  a los servicios de información, valoración, diagnóstico y orientación, tanto en el nivel primario como en el especializado.
+
+No obstante, no se podrá instar la revisión del grado por agravamiento o mejoría hasta que, al menos, haya transcurrido un plazo mínimo de dos años desde la fecha en que se dictó resolución, excepto en los casos en que se acredite suficientemente error de diagnóstico o se hayan producido cambios sustanciales en las circunstancias que dieron lugar al reconocimiento de grado, en que no será preciso agotar el plazo mínimo.
+
+Documentación
+Artículo 17.3 del Decreto 255/2021, de 30 de noviembre:
+
+a) Documento acreditativo de la representación o guarda de hecho, en su caso.
+b) Si se trata de una persona menor de edad, fotocopia del Libro de Familia. En el caso de padres/tutores separados o divorciados, la solicitud deberá ir firmada por ambos, siempre que a ninguno de ellos le haya sido retirada/suspendida la patria potestad.
+c) Si se trata de una persona extranjera, fotocopia de la tarjeta de identidad de extranjero o, en su defecto, de la solicitud de asilo o refugio, sin perjuicio de lo dispuesto en la legislación respectiva sobre los derechos y beneficios de los discapacitados extranjeros.
+d) Copia de los informes médicos y psicológicos que avalen las deficiencias alegadas y no consten en el sistema que se utiliza en el Servicio Andaluz de Salud como soporte de la historia clínica electrónica (DIRAYA).
