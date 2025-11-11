@@ -98,7 +98,7 @@ def handle_create(args):
         os.remove(METADATA_MAP_FILE)
         print(f"Archivo de metadatos antiguo borrado: {METADATA_MAP_FILE}")
 
-    # --- MODIFICADO: Cargar desde directorio ---
+    # --- Cargar desde directorio ---
     
     # 2. Cargar chunks desde todos los .jsonl en el directorio
     print(f"Buscando archivos .jsonl en: {args.input}")
@@ -122,7 +122,6 @@ def handle_create(args):
     
     chunks = all_chunks
     print(f"\nCarga completada. Total de chunks cargados: {len(chunks)}")
-    # --- FIN DE LA MODIFICACIÓN ---
 
     if not chunks:
         print("No se cargaron chunks. Abortando.")
@@ -266,7 +265,7 @@ def handle_search(args):
         else:
             print(f"\nResultado {i+1} (ID: {idx}) - No se encontraron metadatos.")
 
-# --- NUEVA FUNCIÓN 'ASK' (RAG) ---
+# --- FUNCIÓN 'ASK' (RAG) ---
 
 def handle_ask(args):
     """

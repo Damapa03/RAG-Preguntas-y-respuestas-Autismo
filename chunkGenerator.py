@@ -215,7 +215,7 @@ def main():
         print("Advertencia: No se encontraron archivos .txt en la carpeta de entrada.")
         return
 
-    # --- MODIFICADO: No hay 'with open' global ---
+    
     for ruta_txt in archivos_txt:
         nombre_archivo = ruta_txt.name
         print(f"Procesando: {nombre_archivo}...")
@@ -234,7 +234,7 @@ def main():
                 texto, nombre_archivo, 0 
             )
             
-            # --- NUEVO: Escribir en el archivo de salida individual ---
+            # --- Escribir en el archivo de salida individual ---
             with open(ruta_salida, "w", encoding="utf-8") as f_out:
                 for chunk_json in lista_json:
                     # json.dumps con ensure_ascii=False para tildes
